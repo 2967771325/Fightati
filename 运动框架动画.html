@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background: #e1251b ;
+            font-size: 20px;
+            text-align: center;
+            line-height: 200px;
+            opacity: 0.5;
+            color:#fff;
+              }
+     
+    </style>
+
+</head>
+<body>
+    <div id="box">新年快乐！</div>
+    <script>
+            window.requestAnimationFrame = window.requestAnimationFrame || function(){
+            return setTimeout( fn ,1000/60 )
+        }
+        window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+        var box=document.getElementById('box')
+         animation( box, {
+             width:"800px",
+             height:"800px",
+             fontSize:"50px", 
+             lineHeight:"800px",
+             opacity:1     
+                
+             
+         },2000, 
+         function(){
+            alert('万事如意')
+         }
+         )
+        
+         function animation(ele, json, time , callback){
+              var initvalue={};
+              var  variavalue={};
+
+              for(var key in json){
+                     
+                  initvalue[key] = parseFloat(getStyle(ele)[key]);
+                  variavalue[key]=parseFloat(json[key])-initvalue[key];
+         
+              }
+                  var iniTtime=new Date;
+                  fn();
+                  function fn(){
+                      variaTime=new Date-iniTtime;
+                      rate=variaTime/time;
+                     if(rate>=1){
+                        rate=1
+                        for(var key in variavalue){
+                            // console.log(key);
+                            
+                            vai=rate*variavalue[key] +  initvalue[key];
+                            if (key==='opacity') {
+
+                                ele.style[key]=vai 
+                               
+                                
+                            }else{
+                                 ele.style[key]=vai+'px' 
+                                 console.log(vai);   
+                            }
+                        }
+                        callback && setTimeout(callback.bind(ele),2000)
+                     }else{
+                        requestAnimationFrame(fn)
+                        
+                        
+                        for(var key in variavalue){
+                            // console.log(key);
+                            
+                            vai=rate*variavalue[key] +  initvalue[key];
+                            if (key==='opacity') {
+
+                                ele.style[key]=vai 
+                               
+                                
+                            }else{
+                                 ele.style[key]=vai+'px' 
+                                 console.log(vai);   
+                            }
+                                 
+                             
+
+                            
+                           
+                        }
+                        
+                     }
+                  }
+
+              
+
+         }
+
+        function getStyle( ele ){   //box
+           return ( ele.currentStyle ||  getComputedStyle(ele));
+        }
+    </script>
+ 
+</body>
+</html>

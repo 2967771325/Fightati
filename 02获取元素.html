@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>                                                                                                                 
+    <style>
+        #pox{
+            width: 100px;
+            height: 60px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="pox"></div>
+    <script>
+        
+
+//    document.getElementById(".pox").style.backgroundColor = "red";
+    var box =document.getElementById("pox")
+    box.onmouseenter = function(){
+        box.style.backgroundColor="#ddd";
+    }
+box.onmouseleave = function(){
+        box.style.backgroundColor="red";
+    }
+box.ondblclick = function(){
+        box.style.backgroundColor="#38f";
+    }
+
+    </script>
+</body>
+</html>

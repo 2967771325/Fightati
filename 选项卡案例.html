@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            user-select: none;
+        }
+        .tab{
+            width: 1000px;
+            height: 400px;
+            margin: 50px auto;
+        }
+        .tab-head{
+            width: 1000px;
+            height: 30px;
+            background-color: #ddd;
+        }
+        .tab-head>p{
+            float: left;
+            width: 250px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        .tab-head>p.on{
+            background-color: #f50;
+        }
+        .tab-warp{
+            width: 1000px;
+            height: 440px;
+         
+        }
+        .tab-warp div{
+           height: 100%;
+           display: none;
+        }
+        .tab-warp div.on{
+            display: block;
+        }
+        .tab-warp div img{
+            width: 100%;
+            height: 100%;
+                             
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab-head">
+            <p class="on">图片1</p>
+            <p>图片2</p>
+            <p>图片3</p>
+            <p>图片4</p>
+        </div>
+        <div class="tab-warp">
+            <div class="on"><img src="./images/IP1.jpg" alt=""></div>
+            <div><img src="./images/IP2.jpg " alt=""></div>
+            <div><img src="./images/IP3.jpg" alt=""></div>
+            <div><img src="./images/IP4.jpg" alt=""></div>
+            
+        </div>
+    </div>
+    <script>
+        var title=document.getElementsByTagName('p');
+        var pics=document.querySelectorAll('.tab-warp div')
+        var index=0;
+        
+        for( var i=0;i<pics.length;i++){
+            (function(i){
+
+             title[i].onmouseenter=function(){
+                  
+                 title[index].className=''
+                 pics[index].className=''
+                 index=i;
+                 title[index].className='on'
+                 pics[index].className='on'
+                  }
+                 })(i)
+        }
+    </script>
+</body>
+</html>

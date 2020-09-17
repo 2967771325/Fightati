@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width:100px;
+            height:150px;
+            background-color: #0f0;
+            font-size:20px;
+            opacity: 1;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div id="box"> 中秋快乐！！！！ </div>
+
+
+
+    <script>
+
+        
+        window.requestAnimationFrame = window.requestAnimationFrame || function(fn){
+            return setTimeout( fn ,1000/60 )
+        }
+        window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+        var box = document.getElementById('box')
+
+        function getStyle( ele ){   //box
+           return ( ele.currentStyle ||  getComputedStyle(ele));
+        }
+
+
+        // {
+        //     width:'100px',
+        //     height:'100px',
+        // }
+
+        // animation( box ,'width' , 100 , 5000 )
+        /*
+            {
+                width:'100px',
+                height:'100px',
+            }
+
+
+        */
+        // setTimeout( function(){} )
+        animation( box , {
+            width:"500px",
+            height:'400px',
+            fontSize:"50px",
+            opacity: 0.2
+        } , 2000 ,function (){
+            alert( '已经完成了！！！' )
+            // console.log( this )
+            // this.style.width = '200px'
+        } );
+ 
+        function animation( ele , json , time , callback ){
+
+            console.log( json )
+            var startValue = {};
+            var changeValue = {}
+            var startTime  ;
+
+            for( var key in json ){
+                // console.log( key )
+                // console.log( parseFloat( getStyle( ele )[key] ) )
+                // console.log( startValue )
+                startValue[key] = parseFloat( getStyle( ele )[key] );
+                changeValue[key] = parseFloat( json[key] ) - parseFloat( getStyle( ele )[key] )
+                // console.log( parseFloat( json[key] ) )
+                // console.log( parseFloat( getStyle( ele )[key] ) )
+                // console.log( changeValue )
+
+            }
+
+            startTime = new Date();
+            fn()
+            function fn(){
+                var changeTime = new Date() - startTime;
+                var rate = changeTime/time;  
+
+                if( rate >= 1 ){
+                    rate = 1;
+                    for( var key in changeValue ){
+                        var val = rate*changeValue[key] + startValue[key] ;
+                        if( key ==='opacity'  ){
+                            ele.style[key] = val;
+                        }else{
+                            ele.style[key] = val + 'px'
+                        }
+                    }
+                    callback && setTimeout( callback.bind( ele ),500 );
+
+                }else{
+                    requestAnimationFrame( fn )
+                    console.log(changeValue);
+                    
+                    for( var key in changeValue ){
+                                         
+                        var val = rate*changeValue[key] + startValue[key] ;
+                        if( key ==='opacity' ){
+                            ele.style[key] = val;
+                        }else{
+                            ele.style[key] = val + 'px'
+                        }
+                        // console.log( changeValue )
+                        // console.log( val )
+                    }
+                }
+                // console.log( changeValue )
+
+            }
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

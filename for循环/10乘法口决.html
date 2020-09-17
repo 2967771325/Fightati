@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box>span{
+              display: inline-block;
+                width: 80px;
+                height: 30px;
+                background-color: palevioletred;
+                font-size: 18px;
+                text-align: center;
+                line-height: 30px;
+                border-radius: 4px;
+                margin-right: 6px;
+                margin-bottom: 6px;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span></span>
+    </div>
+    <script>
+        var box =document.getElementById('box');
+        var sft='';
+        for(var i=1;i<=9;i++){
+                    for(var j=1;j<=i;j++){
+                        sft += '<span> '+i+"*"+j+"="+i*j+'</span>'
+                    }
+                    sft+='<br/>'
+        }
+        sft+='<hr/>'
+        for(var i=1;i<=9;i++){
+                    for(var j=i;j<=9;j++){
+                        sft += '<span>'+i+"*"+j+"="+i*j+'</span>'
+                    }
+                    sft+='<br/>'
+        }
+        sft+='<hr/>'
+        for(var i=9;i>0;i--){
+                    for(var j=i;j<=9;j++){
+                        sft += '<span>'+i+"*"+j+"="+i*j+'</span>'
+                    }
+                    sft+='<br/>'
+        }
+        sft+='<hr/>'
+        box.innerHTML=sft;
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" ondragstart="return false">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: url('https://img13.360buyimg.com/pop/s1180x940_jfs/t1/136116/21/3326/65180/5efc3f9eE10af8847/47ee227ebb0bee08.jpg.webp')
+            center /contain;
+            position: relative;
+            cursor: pointer;
+        }
+        #wrap>div{
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: brown;
+        }
+        #top{
+             top: 0;
+             left: 50%;
+             margin-left:-10px ;
+        }
+        #rightTop{
+            top: 0;
+            right: 0;
+        }
+        #right{
+            right: 0;
+            top: 50%;
+            margin-top: -10px;
+        }
+        #rightBottom{
+            right: 0;
+            bottom: 0;
+        }
+        #bottom{
+            bottom: 0;
+            left: 50%;
+            margin-left: -10px;
+        }
+        #leftBottom{
+            bottom: 0;
+            left: 0;
+        }
+        #left{
+            left: 0;
+            top: 50%;
+            margin-top:-10px ;
+        }
+        #leftTop{
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="top"></div>
+        <div id="rightTop"></div>
+        <div id="right"></div>
+        <div id="rightBottom"></div>
+        <div id="bottom"></div>
+        <div id="leftBottom"></div>
+        <div id="left"></div>
+        <div id="leftTop"></div>
+    </div>
+        <script>
+            document.getElementById('wrap');
+          document.onmousedown =function(e){
+              e.stopPropagation();
+              var target = e.target;
+              var domwmX =e.clientX,
+                  domwnY = e.clientY,
+                  domwnLeft= wrap.offsetLeft,
+                  domwnTop = wrap.offsetTop,
+                  domwnWidth =wrap.clientWidth,
+                  domwnHeight = wrap.clientHeight;
+
+
+            document.onmousemove = function(e){
+               var X_ =e.clientX-domwmX;
+               var Y_ = e.clientY-domwnY;
+               switch (target.id){
+                   case 'wrap':
+                   wrap.style.top = domwnTop + Y_+"px"
+                   wrap.style.left = domwnLeft + X_+"px"
+                   break;
+                   case 'top':
+                        wrap.style.height = domwnHeight - Y_ +"px";
+                        wrap.style.top= domwnTop + Y_ +"px";
+                        
+                   break;
+
+                   case "rightTop":
+                   wrap.style.height = domwnHeight - Y_ +"px";
+                   wrap.style.width = domwnWidth +X_ +"px";
+                   wrap.style.top = domwnTop +Y_+"px";
+                 
+                break;
+
+                case "right":
+                wrap.style.width = domwnWidth + X_+"px";
+                break;
+
+                case "rightBottom":
+                wrap.style.width = domwnWidth + X_ +"px";
+                wrap.style.height =domwnHeight + Y_ +"px";
+                break;
+
+                case "bottom":
+                wrap.style.height =domwnHeight +Y_+"px";
+                
+                break;
+                case "leftBottom":
+                wrap.style.width = domwnWidth - X_+"px";
+                wrap.style.height =domwnHeight +Y_ +"px";
+                wrap.style.left = domwnLeft + X_ +"px";
+                break;
+                
+                case "left":
+                wrap.style.width = domwnWidth -X_+"px";
+                wrap.style.left = domwnLeft + X_ +"px";
+                break;
+                case "leftTop":
+                wrap.style.width = domwnWidth - X_+"px";
+                wrap.style.height =domwnHeight - Y_ +"px";
+                wrap.style.left = domwnLeft + X_ +"px";
+                wrap.style.top = domwnTop + Y_ +"px";
+                break;
+                
+           
+          }
+          console.log(rightTop);
+          }
+          
+          document.onmouseup = function(){
+              document.onmousemove=null;
+          }
+          }
+        </script>
+    
+</body>
+</html>

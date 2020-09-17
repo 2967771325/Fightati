@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            margin: 0;
+            height: 0;
+        }
+        .cut{
+            /* margin-top: 50px ; */
+            width: 200px;
+            /* padding-left:  352px; */
+            position: absolute;
+            top: 50px;
+            /* left: 23.9%; */
+          
+        }
+        .but{
+            width: 100px;
+            height: 50px;
+            background-color:#ddd;
+            float: left;
+           
+        }
+        .pocture{
+            width: 800px;
+            height: 400px;
+            margin: 50px auto;
+        }
+        .pocture>img{
+    
+            position: absolute;
+            top: 100px;
+            display: block;
+        }
+        .on{
+            background-color:darkgoldenrod;
+        }
+        .pocture .pn{
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <!-- <div class="cut">
+            <div class="but"></div>
+            <div class="but"></div>
+        </div> -->
+        <div class="pocture">
+                <div class="cut">
+                        <div class="but on" ></div>
+                        <div class="but"></div>
+                    </div>
+            <img src="images/1.jpg" alt="" class="pn">
+            <img src="images/2.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var box= document.getElementsByClassName('but');
+        var poc= document.getElementsByTagName('img');
+        
+        box[0].onclick=function(){
+            box[0].className='but on';
+            box[1].className='but';
+            poc[0].className='pn'
+            poc[1].className=''
+
+    
+        }
+        box[1].onclick=function(){
+            box[1].className='but on';
+            box[0].className='but';
+            poc[1].className='pn'
+            poc[0].className=''
+            
+            
+        }
+    </script>
+</body>
+</html>

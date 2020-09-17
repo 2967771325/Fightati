@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width:100px;
+            height:100px;
+            background-color: #0f0;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div id="box"></div>
+
+
+
+    <script>
+    
+        /*
+            今晚讲的课，只改变一个值，明天讲的，是一次性多个值；
+        */
+        
+        window.requestAnimationFrame = window.requestAnimationFrame || function(fn){
+            return setTimeout( fn ,1000/60 )
+        }
+        window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+        var box = document.getElementById('box')
+
+        function getStyle( ele ){   //box
+           return ( ele.currentStyle ||  getComputedStyle(ele));
+        }
+        
+        /*
+            {
+                width:'100px',
+                height:'100px',
+            }
+        
+        */
+
+        animation( box ,'width' , 1000 , 2000 )
+
+        //ele :对象 ， attr :属性  value:属性值  time:时间（ms）
+        function animation( ele , attr ,value , time  ){
+
+            var startAttr = parseFloat(getStyle( ele )[attr]);
+            // console.log( startAttr )
+            var startTime = new Date() ;  //初始时间
+            var changeAttr = parseFloat( value ) - startAttr;
+
+            fn()
+            function fn(){
+               
+                nowTime=new Date()-startTime;
+                difference=nowTime/time; 
+                if (difference>=1){
+                    difference=1
+
+                }else{
+                   requestAnimationFrame(fn);  
+                }
+               
+                vai=difference*changeAttr+startAttr;
+               
+                console.log(vai);
+                ele.style[attr]=vai+"px"
+
+            }
+
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

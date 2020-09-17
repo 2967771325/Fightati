@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #warp{
+            width: 1130px;
+            height: 500px;
+            margin: 100px auto 0;
+            position: relative;
+            user-select: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .button{
+               position: absolute;
+               height: 40px;
+               top: -40px;
+        }
+        .button span{
+            width: 160px;
+            height: 40px;
+            background-color: #ccc;
+            font-size: 18px;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+           color: #fff;
+          cursor: pointer;
+
+        }
+        .button span.on{
+            background-color:#FF0C40 ;
+        }
+       ul li{
+            position: absolute;
+            width: 1130px;
+            height: 500px;
+            display: none;
+        }
+        ul li.active{
+            display: block;
+        }
+        .btn{
+            height: 50px;
+            width: 30px;
+            background-color: rgba(0,0,0,.3);
+            position: absolute;
+            top:50%;
+            text-align: center;
+            font-size: 28px;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .left{
+            left: 0;
+        }
+        .right{
+            right: 0;
+        }
+        
+    
+        .description{
+            height: 30px;
+            font-size: 14px;
+            color: #fff;
+            line-height: 30px;
+            width: 100%;
+            position: absolute;
+
+            background-color:rgba(0,0,0,.3) ;
+            text-align: center;
+        }
+        .top{
+                top: 0;
+        }
+        .bottom{
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="warp">
+        <div class="button">
+            <span class="on">偱环切换</span>
+            <span>单边切换</span>
+        </div>  
+        <ul>
+            <li class="active"><img src="./images/IP1.jpg" alt="" width="100%" height="100%"></li>
+            <li><img src="./images/IP2.jpg" alt="" width="100%" height="100%"></li>
+            <li><img src="./images/IP3.jpg" alt="" width="100%" height="100%"></li>
+            <li><img src="./images/IP4.jpg" alt="" width="100%" height="100%"></li>
+            <li><img src="./images/IP5.jpg" alt="" width="100%" height="100%"></li>
+        </ul>
+        <div class="btn left"><</div>
+        <div class="btn right">></div>
+        <p class="description top"><span class="text">1</span>/5</p>
+        <p class="description bottom">A</p>
+    </div>
+    <script>
+        var leftBut=document.getElementsByClassName('btn')[0]
+        var rightBut=document.getElementsByClassName('btn')[1]
+        var oli= document.getElementsByTagName('li')
+        var text=document.getElementsByClassName('text')[0]
+        var bot= document.getElementsByClassName('bottom')[0]
+        var array =["A","B","C","D","E"]
+        var buts =document.querySelectorAll('.button span');
+        index=0;
+        swi=true;
+         
+         buts[0].onclick = function(){
+             buts[0].className="on"
+             buts[1].className=""
+             swi=true;
+
+         }
+         buts[1].onclick = function(){
+            buts[1].className="on"
+             buts[0].className=""
+             swi=false;
+         }
+
+
+        leftBut.onclick = function(){
+            oli[index].className =''
+                index--;  // 0 1 2 3 4
+                if(swi){
+                    if( index < 0 ){ //5
+                        index = 4
+                        // console.log( '已经进来了' )
+                    }
+                }else{
+                    if( index < 0 ){ //5
+                        index = 0
+                        alert('你在点呀')
+                        // console.log( '已经进来了' )
+                    }
+                }
+                
+                    oli[index].className ='active'
+                    text.innerHTML=index+1;
+                    bot.innerHTML=array[index];
+         
+        }
+
+        rightBut.onclick = function(){
+            oli[index].className =''
+                index++;  // 0 1 2 3 4
+                if(swi){
+                    if( index > 4 ){ //5
+                        index = 0
+                        // console.log( '已经进来了' )
+                    }
+                }else{
+                    if( index > 4 ){ //5
+                        index = 4
+                        alert('你在点呀')
+                        // console.log( '已经进来了' )
+                    }
+                }
+                
+                    oli[index].className ='active'
+                    text.innerHTML=index+1;
+                    bot.innerHTML=array[index];
+        }
+
+    </script>
+</body>
+
+</html>

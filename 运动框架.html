@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>图片旋转</title>
+    <style type="text/css">
+        #div1 {
+            position: relative;
+            height: 800px;
+            border: 1px solid red;
+        }
+
+        #div1 img {
+            position: absolute;
+            
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <img src="./images/rocket.png" style="width: 60px;height: 60px;">
+    <img src="./images/rocket.png" style="width: 60px;height: 60px;">
+    <img src="./images/rocket.png" style="width: 60px;height: 60px;">
+    <img src="./images/rocket.png" style="width: 60px;height: 60px;">
+    <img src="./images/rocket.png" style="width: 60px;height: 60px;">
+    <img src="./images/rocket.png" style="width: 60px;height: 60px;">
+  
+  
+</div>
+<script type="text/javascript">
+    var centerx = 400; //圆心X
+    var centery = 300; //圆心Y
+    var r = 300; //半径
+    var oimages = document.getElementById("div1").getElementsByTagName("IMG"); //图片集合
+    var cnt = oimages.length; //图片数
+    var da = 360 / cnt; //图片间隔角度
+    var a0 = 0; //已旋转角度
+    var timer;
+    for (var i = 0; i < cnt; i++) {
+        oimages[i].onmouseover = stop;
+        oimages[i].onmouseout = start;
+    }
+
+    function posimgs() {
+        for (var i = 0; i < cnt; i++) {
+            oimages[i].style.left = centerx + r * Math.cos((da * i + a0) / 180 * Math.PI) + "px";
+            oimages[i].style.top = centery + r * Math.sin((da * i + a0) / 180 * Math.PI) + "px";
+        }
+    }
+
+    // posimgs();
+    function start() {
+        timer = window.setInterval("posimgs();a0++;", 100);
+    }
+
+    function stop() {
+        window.clearInterval(timer);
+    }
+
+    start();
+</script>
+</body>
+
+</html>

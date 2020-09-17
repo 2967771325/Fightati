@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+           width: 200px;
+           height: 160px;
+           background-color: blueviolet;
+           margin: 50px auto;
+        }
+        p{
+            width: 200px;
+            height: 20px;
+            background-color: lightpink; 
+            text-align: center;   
+        }
+    </style>
+</head>
+<body>
+   <div id="box">
+       <p> 文字标签</p>
+   </div>
+   <script>
+       
+       document.addEventListener('click',fn)
+       function fn(e){
+             if(e.target.tagName ==='DIV'){
+                e.target.style.background='#fc561f'
+                }else if(e.target.tagName === 'P'){
+                    e.target.innerHTML='打倒特朗普'
+                }else{
+                    console.log('以上两');
+                    e.target.style.background='#4b89ff'
+                }
+       }
+   </script>
+   
+</body>
+</html>

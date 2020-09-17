@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    #box{
+            width:500px;
+            height: 200px;
+            margin:50px auto;
+            padding:10px;
+            border:2px solid pink;
+        }
+        span{
+            color:#f60;
+            font-size:18px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+        <div id="box">
+            <input type="text" placeholder="匹配项">
+            <input type="text" placeholder="替换项">
+            <button>查找</button>
+            <button>替换</button>
+            <p>凯迪，出生于吉林长春，毕业于重庆大学美视电影学院表演系，中国内地女演员。
+                2008年凯迪参演家庭轻喜剧《把日子过好》；2010年参演法院题材剧《防线》；2011年出演悬疑电影《密室之不可靠岸》；2014年参演爱情喜剧电影《撒娇女人最好命》；2016年参演剧情悬疑电影《记忆大师》 [1]  ；2017年出演悬疑推理剧《白夜追凶》，同年参演爱情奇幻剧《结爱·千岁大人的初恋》。</p>
+        </div>
+        <script>
+            var ptesx=document.getElementsByTagName('p')[0],
+                inps=document.getElementsByTagName('input'),
+                buts=document.getElementsByTagName('button'),
+                pitepTXE=ptesx.innerHTML;
+                buts[0].onclick=function(){
+                    var vul=inps[0].value.trim();
+                    if(vul){
+                    ptesx.innerHTML=pitepTXE.split(vul).join('<span>'+vul+'</span>')
+                    }
+                }
+                buts[1].onclick=function(){
+                    var val=inps[0].value.trim();
+                    var val1=inps[1].value.trim();
+                    if(val&&val1){
+                    ptesx.innerHTML=pitepTXE.split(val).join('<span>'+val1+'</span>')
+                    }
+                }
+                
+        </script>
+
+
+
+</body>
+</html>

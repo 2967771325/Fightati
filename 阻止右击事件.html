@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" oncontextmenu="return false">
+<head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 100%; 
+            height: 100%;
+        }
+       
+    </style>
+</head>
+<body>
+      <input type="file" >
+      
+      <script>
+          var vre =document.getElementsByTagName('input')
+        //   document.addEventListener('')
+        console.log(vre.value);
+        document.oncontextmenu=function(e){
+            body.style.background="url(vre.value)" 
+            // e.preventDefault()
+        }
+        //   r
+      </script>
+</body>
+</html>

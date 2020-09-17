@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+         #box{
+             cursor: pointer;
+             width: 100px;
+
+             height: 100px; 
+             
+             background: url(https://imgcps.jd.com/ling4/66115879010/5q-P5ruhMzAw5YePMzA/5aSP5pel57uF5aOr5LmL6YCJ/p-5bd8253082acdd181d02fa64/cdf059d6/cr/s/q.jpg) 
+               /* center/contain ; */ ;
+             position: relative;
+
+                      }
+         #but{
+             width: 10px;
+             height: 10px;
+             background-color: magenta;
+             position: absolute;
+             bottom: 0;
+             right: 0;
+         }
+    </style>
+</head>
+<body>
+     <div id="box">
+        <div id="but"></div>
+
+      </div>
+      <script>
+          var box=document.getElementById('box'),
+              but=document.getElementById('but');
+             
+              
+              function press(e){
+                  e = e ||window.event;
+                //   console.log('我按下了')
+                  e.stopPropagation()
+                  var orglX = e.clientX;
+                  var orglY = e.clientY;
+                  var target =e.target;
+                  var pointer =this;
+                  if(target.id === 'but'){
+                      console.log(1);
+                      var prewomWidth = this.parentNode.clientWidth;
+                      var prewomHeight =this.parentNode.clientHeight; 
+
+                  }else{
+                   
+                   var prewomTop = this.offsetTop;
+                   var prewomLeft = this.offsetLeft;
+                  }
+
+
+                function movenp(e){ 
+                    var X_ = e.clientX - orglX;
+                    var Y_ = e.clientY - orglY;
+                    // console.log(X_);
+                    //   console.log("我移动了");
+                       if( target.id === 'but'){
+                           console.log(1);
+                         pointer.parentNode.style.width = prewomWidth + X_+"px";
+                         pointer.parentNode.style.height = prewomHeight + Y_ +"px";  
+                   
+                       }else{
+                            pointer.style.top = prewomTop + Y_ +"PX" ;
+                            pointer.style.left = prewomLeft + X_ +"px" ;
+                       }
+                }
+
+                  function pickup(e){
+                       e.stopPropagation()
+                       console.log("我抬起了");
+                       document.removeEventListener('mousemove' , movenp)
+                       document.removeEventListener('mouseup', pickup)
+
+                  }
+                   
+                  document.addEventListener('mouseup' , pickup)
+                  document.addEventListener('mousemove' , movenp)
+              }
+             
+              box.addEventListener("mousedown",press)
+              but.addEventListener("mousedown",press)
+      </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       #pox{
+           margin: 0 50%;
+       }
+    </style>
+</head>
+<body>
+    <div id="pox"></div>
+    <script>
+        var box =document.getElementById('pox');
+        var sct = '';
+       
+
+        for(var i=0;i<20;i++){
+            for(var j=0;j<i+20;j++)
+               if(j<19-i){
+                   sct+="&nbsp"
+               }else{
+                   sct+="*"
+               }
+               sct+= "<br/>"
+        }
+         
+        // for(var i=0;i<5;i++){
+        //     if(i<2){
+        //         sct+="&nbsp"
+        //     }else{
+        //         sct+="*"
+        //     }
+        // }
+        // sct+= "<br/>"
+        // for(var i=0;i<6;i++){
+        //     if(i<1){
+        //         sct+="&nbsp"
+        //     }else{
+        //         sct+="*"
+        //     }
+        // }
+        // sct+= "<br/>"
+        // for(var i=0;i<7;i++){
+        //     if(i<0){
+        //         sct+="&nbsp"
+        //     }else{
+        //         sct+="*"
+        //     }
+        // }
+        box.innerHTML=sct;
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:no-repeat center/contain;
+            height: 5000px;
+            border: lightpink;
+
+        }
+      
+    </style>
+</head>
+<body>
+    <input type="file" name="file" multiple>
+    <div id="box"></div>
+    <script>
+         var file = document.querySelector('input'),
+         box = document.getElementById('box');
+         var body = document.querySelector('body');
+         
+
+         file.addEventListener("change", function(){
+       
+             
+         var tfrom= this.files[0];
+
+             var tfobjt= new FileReader();
+
+             tfobjt.readAsDataURL(tfrom);
+
+             tfobjt.onload =function(){
+
+                 var img=new Image
+               
+                 let val= this.result;
+                 body.style.background=`url(${val})no-repeat 50%  5% ` ;
+                 img.src=this.result;
+                  box.appendChild(img)
+                 
+                 img.style.width=500+'px';
+                 img.style.border='1px solid lightpink'
+             }
+             
+         })
+
+       
+    </script>
+</body>
+</html>

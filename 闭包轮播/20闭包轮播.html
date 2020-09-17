@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    *{margin:0;padding:0;font-family: Microsoft YaHei,serif;}
+	    li{list-style: none;}
+        #box{
+            width:426px;
+            height:104px;
+            margin:50px auto;
+
+        }
+        #tab{
+            width:100px;
+            height:100%;
+            float: left;
+
+        }
+        #tab ul li{
+            width:100px;
+            height:50px;
+            margin-bottom: 1px;
+            background: #000;
+            font-size:18px;
+            text-align: center;
+            line-height:50px;
+            color:#fff;
+            cursor: pointer;
+        }
+        #tab ul li.on{
+            background: #f60;
+        }
+
+        #content{
+            position: relative;
+            width: 326px;
+            height:203px;
+            float: right;
+
+        }
+        #content .pic{
+            display: none;
+        }
+        #content .pic.on{
+            display: block;
+        }
+        #content .pic ul li{
+            display: none;
+            width:100%;
+            height:203px;
+        }
+        #content .pic ul li.on{
+            display: block;
+        }
+        #content .btn{
+            display: none;
+            position: absolute;
+            bottom:0;
+            right:0;
+            height:35px;
+            width:100%;
+            background: rgba(0,0,0,.5);
+            cursor: pointer;
+        }
+        #content .btn.on{
+            display: block;
+        }
+        #content .btn ul{
+            float: right;
+        }
+        #content .btn ul li{
+            float: left;
+            width:35px;
+            height:35px;
+            background: #ddd;
+            text-align: center;
+            line-height:35px;
+            margin-left:2px;
+        }
+        #content .btn ul li.on{
+            background: #f60;
+        }
+
+    </style>
+</head>
+<body>
+
+        <div id="box">
+                <div id="tab">
+                    <ul>
+                        <li class="on">选项卡一</li>
+                        <li>选项卡二</li>
+                        <li>选项卡三</li>
+                        <li>选项卡四</li>
+                    </ul>
+                </div>
+                <div id="content">
+                    <div class="pic on">
+                        <ul>
+                            <li class="on" style="background: url(imagesi/c1.jpg);"></li>
+                            <li style="background: url(imagesi/c2.jpg);"></li>
+                            <li style="background: url(imagesi/c3.jpg);"></li>
+                            <li style="background: url(imagesi/c4.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn on">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                    </div>
+        
+                    <div class="pic">
+                        <ul>
+                            <li class="on" style="background: url(imagesi/m1.jpg);"></li>
+                            <li style="background: url(imagesi/m2.jpg);"></li>
+                            <li style="background: url(imagesi/m3.jpg);"></li>
+                            <li style="background: url(imagesi/m4.jpg);"></li>
+                            <li style="background: url(imagesi/m5.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                        </ul>
+                    </div>
+        
+                    <div class="pic">
+                        <ul>
+                            <li class="on" style="background: url(imagesi/c1.jpg);"></li>
+                            <li style="background: url(imagesi/c2.jpg);"></li>
+                            <li style="background: url(imagesi/c3.jpg);"></li>
+                            <li style="background: url(imagesi/c4.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                    </div>
+        
+                    <div class="pic">
+                        <ul>
+                            <li class="on" style="background: url(imagesi/s1.jpg);"></li>
+                            <li style="background: url(imagesi/s2.jpg);"></li>
+                            <li style="background: url(imagesi/s3.jpg);"></li>
+                            <li style="background: url(imagesi/s4.jpg);"></li>
+                            <li style="background: url(imagesi/s5.jpg);"></li>
+                        </ul>
+                    </div>
+                    <div class="btn">
+                        <ul>
+                            <li class="on">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                            <li>5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var tabi=document.querySelectorAll('#tab li'),
+                    pic=document.getElementsByClassName('pic'),
+                    btn=document.getElementsByClassName('btn'),
+                    index=0;
+                    
+                    
+                    for(var i=0;i<tabi.length;i++){
+                        pici=pic[i].querySelectorAll('li');
+                        btni=btn[i].querySelectorAll('li');
+                        (function(i){
+                           tabi[i].onmouseenter=function(){
+                               
+                               tabi[index].className=''
+                               pic[index].className='pic'
+                               btn[index].className='btn'
+                               index=i;
+                               tabi[index].className='on'
+                               pic[index].className=' pic on'
+                               btn[index].className='on btn'
+                           }
+
+                      })(i); 
+
+                       (function(pri , bri){
+                           var idx=0;
+                           for(var i=0;i<bri.length;i++){
+                               (function(i){
+                                  
+                                   
+                                   bri[i].onmouseenter=function(){
+                                    bri[idx].className='';
+                                    pri[idx].className='';
+                                     idx=i;
+                                     bri[idx].className='on';
+                                     pri[idx].className='on'
+                                   }
+                               })(i)
+                           }
+
+                })(pici,btni);  
+                    }
+              
+            </script>
+
+    
+</body>
+</html>

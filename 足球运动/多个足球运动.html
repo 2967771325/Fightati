@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        } 
+        body{
+            background-color:#EE7700 ;
+        }
+        .box{
+            width: 80px;
+            height: 80px;
+            background:url(./imgems/01.png) center/contain ;
+            position: absolute;
+            transform-origin:center; 
+        }
+        
+        
+       
+    </style>
+</head>
+<body>
+  
+    <script>
+        var speed;
+        var wo=0;
+        fn(10)
+        function fn(num){
+            for(var i=0; i <num; i++ ){
+               
+               var div = document.createElement('div');
+               div.className ='box';
+               div.speedY=Math.floor(Math.random()*10+2);
+               div.speedX=Math.floor(Math.random()*10+2);
+             
+               
+               document.body.appendChild( div );
+            }
+           
+           var box=document.getElementsByClassName('box'); 
+           
+            maxmX=document.documentElement.clientWidth - box[0].offsetWidth;
+            maxmY=document.documentElement.clientHeight - box[0].offsetHeight;
+
+            window.onresize = function(){
+
+             maxmX=document.documentElement.clientWidth - box[0].offsetWidth;
+             maxmY=document.documentElement.clientHeight - box[0].offsetHeight;
+
+          }
+          play();
+          function play(){
+              for(var i=0; i<num ;i++ ){
+                var add = box[i];
+                var elementLeft=add.offsetLeft;
+                var elementTop=add.offsetTop;
+                console.log(add.speedX);
+                Top=elementTop+add.speedY;
+                Left=elementLeft+add.speedX;
+               
+                if( Top<=0|| Top>=maxmY){
+                    add.speedY =-add.speedY;
+                    if(Top<=0){
+                        Top=0;
+                    }
+                    if(Top>=maxmY){
+                        Top=maxmY;
+                    }
+                }
+                if( Left<=0|| Left>=maxmX){
+                    add.speedX =-add.speedX;
+                    if(Left<=0){
+                        Left=0;
+                    }
+                    if(Left>=maxmX){
+                        Left=maxmX;
+                    }
+                }
+                
+                
+                wo=Math.random()*200;
+               
+                
+                
+                add.style.transform=`rotate(${wo}deg)`;
+                add.style.left=Left+'px';
+                add.style.top=Top+'px';
+                
+              } 
+
+             
+              
+
+                 } 
+             window.onkeydown=function(e){
+
+                            
+                  if(e.keyCode === 17){
+                    
+                    clearInterval(play );
+                    
+                  
+                  }else if(e.keyCode ===18){
+                         
+                   
+                  var plaid=+setInterval( play ,100); 
+                      
+                     } 
+                  
+         }
+                  
+            
+            
+            
+          }
+    
+         
+
+
+    </script>
+</body>
+
+</html>

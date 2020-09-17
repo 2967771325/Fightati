@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+              
+                margin:50px auto;
+                height: 100%;
+                width: 1100px;
+              
+		}
+        #box1{
+                width: 500px;
+             
+                border:1px solid;
+                padding:20px;
+                float: left;
+		}
+      #box2{
+          float: left;
+        
+          width: 500px;
+    
+            border:1px solid;
+            padding:20px;
+      }
+		p{
+			font-size:20px;
+			font-weight: bold;
+			padding:5px;
+			border-bottom: 1px solid #ddd;
+		}
+	
+		span{
+			display: inline-block;
+			text-indent: 20px;
+		}
+    
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="box1">
+            <p>
+                伦敦时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                北京时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                悉尼时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                洛杉矶时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                印度时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                迪拜时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                纽约时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+        </div>
+        <div id="box2">
+            <p>
+                莫斯科时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                首尔时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                巴西利亚时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+               惠灵顿时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                泰国时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                埃及时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+            <p>
+                阿根延时间：<br>
+                <span>
+                    
+                </span>
+            </p>
+        </div>
+      </div>
+        <script>
+        
+            var spans = document.getElementsByTagName('span');
+            var arr = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+
+            /*
+                伦敦：0区
+                北京：东八区
+                xini :东十区
+                洛杉矶：西八区
+                印度：东五区
+                迪拜：东四区
+                西班牙:东一区
+            */
+            // var date = new Date();
+            // date.getTimezoneOffset();//-480   //0
+            //-480*60*1000
+            //
+
+            function fn(){
+                var date = new Date();  
+
+               
+                
+                //伦敦所在的地方距离1970年的毫秒值；
+             var UTCimc=date.getTime()+date.getTimezoneOffset()*60*1000;
+             console.log(date.getTime());
+              
+              var arrtime=[
+                dateFormat(UTCimc+1*60*60*1000),
+                dateFormat(new Date()),
+                dateFormat(UTCimc+ 11*60*60*1000 ),
+                dateFormat(UTCimc -7 *60*60*1000),
+                dateFormat(UTCimc + 5.5 *60*60*1000),
+                dateFormat(UTCimc + 4 *60*60*1000),
+                dateFormat(UTCimc- 5 *60*60*1000),
+                dateFormat(UTCimc + 3 *60*60*1000),
+                dateFormat(UTCimc +9 *60*60*1000),
+                dateFormat(UTCimc -2*60*60*1000),
+                dateFormat(UTCimc + 13*60*60*1000),
+                dateFormat(UTCimc + 7*60*60*1000),
+                dateFormat(UTCimc + 2*60*60*1000),
+                dateFormat(UTCimc - 3*60*60*1000)
+               
+                
+              ]
+            
+              for(var i=0;i<spans.length;i++){
+                       spans[i].innerHTML=arrtime[i];
+              }
+            }
+            fn()
+
+            setInterval(fn,1000)
+            function dateFormat(d){
+                var date = new Date(d);
+                var YY = date.getFullYear();   
+                var MM = date.getMonth()+1;   
+                var DD = date.getDate();
+                var week = date.getDay();   
+                var hh = date.getHours();
+                var mm = date.getMinutes()
+                var ss = date.getSeconds();
+                return (YY+'年'+MM+'月'+DD+'日 '+ arr[week] +' '+ hh + '时'+mm+'分'+ss+'秒')
+            }
+
+     
+        
+        </script>
+
+</body>
+</html>

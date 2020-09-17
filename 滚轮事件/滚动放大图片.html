@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style='height: 5000px;'>
+    <img src="https://img.99box.com/game/2020/01/08/5e157df86a5de.jpg/gog_detail_new" alt="" width="500" id="pic">
+    <script>
+       
+       var pic =document.getElementById('pic');   
+
+       //备用方案
+       
+
+//        console.log(pic);     /*
+//             参数：
+//                 对象  
+//                 实现功能
+//                     判断方向
+//                         d
+//                     event事件
+//                         e
+//                     阻止默认事件：
+//                         return false
+
+
+//         */ 
+        mousewheel( pic , function( d , e ){
+
+// console.log( e )
+if( d > 0  ){
+    // console.log( '向上滚' )
+    pic.width+=5;
+}else{  
+    // console.log( '向下滚' )
+    pic.width-=5;
+}
+// console.log( this )  //里面的this指向window;
+return false;  //本身就是没有意义；
+
+}  )
+
+
+// // animation( obj , {} , 1000, function(){} )
+
+// // document.onclick = function fn( e ){}
+
+function mousewheel( dom , fn ){
+// // console.log( dom )
+// // console.log( fn )
+// // fn()
+
+function pandi( e ){
+//     // console.log( '我已经进行滚动了' )
+//     // console.log( e )
+//     //事件对象event兼容
+    e = e || window.event;
+
+//     //call来改变this的指向
+//     //call里面的this是指向调用对象；
+//     //调用对象是指向document
+//     //call里面第一值是this指向，
+
+//     /*
+//         e.wheelDelta/120 || -e.detail/3 统一方向或尺度；
+//     */
+
+//     //fn函数里面本身没有e,这个e是pandi里面传入形参的e
+
+//     /*
+//         call里面有三个参数
+//             this指向
+//             d的方向，控制滚轮的方向以及尺度 
+//             事件对象event
+//     */
+//     // console.log( fn.call( this , ( e.wheelDelta/120 || -e.detail/3 ) ,e ) )
+//     // console.log( this )
+
+
+//     //if判断里面的值，是判断是阻止默认事件兼容性；
+    if( fn.call( this , ( e.wheelDelta/120 || -e.detail/3 ) ,e ) === false ){
+            console.log(e.wheelDelta);
+        //主流浏览器或IE
+        if( e.preventDefault ){
+            console.log( 1 )
+            e.preventDefault()
+        }else{
+            console.log( 2 )
+            e.returnValue = false;
+        }
+
+    }
+
+
+
+}
+
+
+
+
+
+// //确定火福浏览器或非火狐浏览器
+if( dom.onmousewheel === null ){
+    var type = 'mousewheel';
+}else{
+    var type = 'DOMMouseScroll'
+}
+
+//事件监听兼容
+if( document.addEventListener ){
+    //主流浏览器，或高版IE
+    dom.addEventListener( type , pandi , false )
+}else{
+    //低版本IE浏览器
+    dom.attachEvent( 'on' + type , pandi )
+}
+
+
+
+}
+
+document.onclick = function( e ){
+    console.log( this )
+}
+document.addEventListener( 'click',function( e ){
+    console.log( this )
+} )
+
+
+
+
+
+// a = 1
+// var a = fn()
+// function fn(){
+//     return 1
+// }
+
+    </script>
+</body>
+</html>

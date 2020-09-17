@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #warp{
+            width: 600px;
+            height: 40px;
+            background-color: #0077e6;
+            margin: 50px auto 0;
+           padding: 10px;
+           position: relative;
+        }
+        .title img{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            border-radius: 50%;
+
+          display: none;
+        }
+        .title .active{
+            display: block;
+        }
+        .conten{
+            /* float: left; */
+            margin-left: 80px;
+            line-height: 40px;
+            width: 300px;
+            display: none;
+        }
+        .conten input{
+        
+            width: 230px;
+            height: 30px;
+        }
+        .btn{
+            width: 40px;
+            height: 34px;
+        }
+        .add{
+            float:right;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+          .list{
+              width: 620px;
+              /* height: 40px; */
+              border: #0077e6 4px solid;
+              list-style: none;
+              margin: 50px auto 0 ;
+
+          }
+          .list li{
+              height: 50px;
+              /* padding-bottom:5px ; */
+              border: 1px #ccc dashed;
+              
+          }
+          .list li img{
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              float: left;
+              margin-top: 5px;
+          }
+          .list li p{
+              text-align: left;
+              line-height: 50px;
+              padding-left: 20px;
+              float: left;
+          }
+    </style>
+</head>
+<body>
+    <div id="warp">
+        <div class="title">
+                      <img src="./images/li1.jpeg" alt=""class="active">
+            <img src="./images/li2.jpg" alt="">
+            <div class="conten">
+                <input type="text" value="">
+                <button class="btn">发表</button>
+            </div>
+            <button class="add">+</button>
+        </div>
+       
+    </div>
+    <ul class="list">
+        <!-- <li><img src="./images/li1.jpeg" alt=""><p>这里是我的内容</p></li> -->
+       </ul>
+       <script>
+              var imgs =document.querySelectorAll('.title img'),
+                  con =document.getElementsByClassName('conten')[0],
+                  inp=document.getElementsByTagName('input')[0],
+                  btn=document.getElementsByClassName('btn')[0],
+                  add=document.getElementsByClassName('add')[0],
+                  list=document.getElementsByClassName('list')[0],
+                  shut=false,
+                  imgstr=imgs[0].src;
+                
+           
+
+               add.onclick =function(){
+                   if(shut){
+
+                       console.log("关");
+                       
+                            shut=false;
+                            con.style.display="none"
+                   }else{
+                    console.log("开");
+                       shut=true;
+                    con.style.display="block"
+                   }
+               }
+              imgs[0].onclick = function(){
+                 imgs[1].className='active'
+                 imgs[0].className=''
+                 imgstr = imgs[1].src;
+                 console.log(imgstr);
+                 
+              }
+              imgs[1].onclick = function(){
+                imgs[0].className='active'
+                 imgs[1].className=''
+                 imgstr = imgs[0].src;
+                 console.log(imgstr);
+              }
+
+              btn.onclick=function(){
+                var str=inp.value;
+                  if(str===''){
+                          alert("你输入的内容为空")
+                  }else{
+                
+                  list.innerHTML+='<li><img src="'+imgstr+'" alt=""><p>'+str+'</p></li>'
+                  inp.value=""
+                  }
+            
+              }
+       </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            min-height: 100px;
+            background-color: brown;
+            margin-top:50px ;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <input type="text" name="name">
+    <div></div>
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+        var box = document.getElementsByTagName('div')[0];
+        input.onfocus = function(){
+            console.log("获取焦点");
+
+        }
+        input.onblur = function(){
+           box.innerHTML=this.value;
+            
+        }
+        input.onchange = function(){
+            box.innerHTML=this.value;
+        }
+        input.oninput = function(){
+            box.innerHTML=this.value;
+        }
+    </script>
+</body>
+</html>

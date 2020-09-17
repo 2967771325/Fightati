@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = "东南亚爽歪歪";
+        var reg = /东/;
+        var reg1 = /爽/;
+        console.log( reg.test(str));
+        console.log(str.match(reg));
+        console.log(str.match(reg1));
+        console.log(reg1.exec(str));
+
+        var txet = "潘老师会所";
+
+        var regtx = new RegExp('潘','g');
+
+        console.log(txet.match(regtx));
+        console.log(regtx.exec(txet));
+
+    
+
+        
+    </script>
+</body>
+</html>

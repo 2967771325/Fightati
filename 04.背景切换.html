@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        img{
+            width: 800px;
+            height: 600px;
+            margin: 50px ;
+            position: absolute;
+            display: block;
+            opacity: 1;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://img11.360buyimg.com/pop/s1180x940_jfs/t1/60740/28/6845/102072/5d4d3e8bEcde21675/a047baa965b2bd8b.jpg.webp" alt="" id="box1">
+    <img src="https://img14.360buyimg.com/pop/s1180x940_jfs/t1/72532/2/6659/100249/5d4ce7c0Ecafd257c/ccb76ff80d343b55.jpg.webp" alt="" id="box2">
+      
+      <script>
+          var box1=document.getElementById("box1");
+          var box2=document.getElementById("box2");
+        box1.onclick=function(){
+            box1.style.display="none"
+            box2.style.display="block"
+            // box1.style.opacity="0"
+            // box2.style.opacity="1"
+        }
+        box2.onclick=function(){
+            //    box2.style.opacity="0"
+            //    box1.style.opacity="1"
+               box2.style.display="none"
+               box1.style.display="block"
+        }
+          
+      </script>
+</body>
+</html>

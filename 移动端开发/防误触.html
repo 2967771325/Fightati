@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+
+        box.addEventListener(
+
+    "touchmove",
+
+    function() {
+
+        this.isMove = true;//定义一个变量来标识用户是否在元素上移动,
+
+    })
+
+box.addEventListener(
+
+    "touchend",
+
+    function() {
+
+        //如果是移动就不会走if里边的事件.
+        if(!this.isMove) {
+
+            // window.location.href = this.href;
+            console.log("没有移动")
+
+        }
+        this.isMove = false;
+
+        console.log("移动了")
+
+    })
+    </script>
+</body>
+</html>

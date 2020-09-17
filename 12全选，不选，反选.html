@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+           margin: 0;
+           padding: 0;
+        }
+        #pox{
+            width: 400px;
+            margin: 50px auto;
+            user-select: none;
+        }
+        #list{
+                   list-style: none;
+
+                    }
+                   
+                   
+        #list>li{
+            width: 100%;
+            height: 40px;
+            border: rebeccapurple 1px solid;
+            cursor: pointer;
+            border-bottom-color:transparent ;
+        }
+
+        #list>li.add{
+            border-bottom-color: rebeccapurple ;
+        }
+        #list>li>span{
+        
+            width: 20px;
+            height: 20px;
+            background-image:url(./images/ck.png);
+            /* display: block; */
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-right: 10px;
+            float: left;
+        }
+        #list>li>span.active{
+                 background-image: url(./images/cked.jpg);
+        }
+        #list>li>p{
+            line-height: 40px;
+            height: 40px;
+        }
+        button.active{
+            background-color: saddlebrown;
+        }
+    </style>
+</head>
+<body>
+    <div id="pox">
+        <ul id="list">
+        <li><span></span><p>德国Modern金属永恒笔</p></li>
+        <li><span></span><p>遥控汽车超大号遥控四驱越野车</p></li>
+        <li><span></span><p>M.2固态硬盘台式机笔记本</p></li>
+        <li><span></span><p>遥控船高速遥控快艇男孩电动玩具</p></li>
+        <li><span></span><p>飞科(FLYCO) 男士电动剃须刀</p></li>
+        <li><span></span><p>沃野牧马人静音游戏鼠标有线笔记本</p></li>
+        <li><span></span><p>酷冷至尊幽灵撕裂者</p></li>
+        <li class="add"><span></span><p>奥松机器人EAI智能移动系统/p></li>
+        </ul>
+        <button>全选</button>
+        <button class="active">全不选</button>
+        <button>反选</button>
+    </div>
+    <script>
+        var lis=document.getElementsByTagName('li'),
+            spans=document.getElementsByTagName('span'),
+            Buts=document.getElementsByTagName('button')
+            len=lis.length,
+            con=0;
+        for(var i=0;i<len;i++){ 
+            spans[i].sl=i;
+            spans[i].kaiguan=false;
+            spans[i].onclick=function(){
+                if(this.kaiguan){
+                    spans[this.sl].className='';
+                    con--;
+                }else{
+
+                   spans[this.sl].className='active'; 
+                    con++;
+                }
+                 this.kaiguan=!this.kaiguan;
+                 console.log(con);
+                lck();
+
+}}
+     
+      Buts[0].onclick=function(){
+          this.className='active';
+          Buts[1].className='';
+          con=len;
+          for(var i=0;i<len;i++){
+          if(spans[i].className!='active'){
+                   spans[i].className='active';
+                   spans[i].kaiguan=true;
+          }
+          }
+          lck();
+      }
+      Buts[1].onclick=function(){
+          this.className='active';
+          Buts[0].className=''
+          con=0;
+          for(var i=0;i<len;i++){
+        
+                   spans[i].className='';
+                   spans[i].kaiguan=false;
+                      }
+                      lck();
+      }  
+
+      Buts[2].onclick=function(){
+             for(var i=0;i<len;i++){
+               if(spans[i].kaiguan){
+                spans[i].className=''  
+                con--;
+               }else{
+                 spans[i].className='active'
+                 con++;
+               }
+               spans[i].kaiguan= !spans[i].kaiguan;
+             }
+             
+            //  console.log(typeof this.kaiguan)
+             lck();
+             
+      } 
+    function lck(){
+        switch(con){
+                     case len:
+                     Buts[0].className='active';
+                     Buts[1].className='';
+                     break;
+                     case 0:
+                     Buts[1].className='active';
+                     Buts[0].className='';
+                     break;
+
+                     default:
+                     Buts[1].className='';
+                     Buts[0].className='';
+
+                 }
+    }        
+    </script>
+</body>
+</html>

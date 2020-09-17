@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dataTransfer</title>
+    <style>
+        .my_div{
+    float: left;
+    width: 100px;
+    height: 50px;
+    margin: 15px;
+    padding: 10px;
+    border: 1px solid red;
+}
+</style>
+</head>
+<body>
+    <div class="my_div" id="box" draggable="true">感染</div>
+    <div class="my_div" id="wrap" draggable="true">抗体</div>
+    <script>
+        const box = document.getElementById("box")
+        const wrap = document.getElementById("wrap")
+        box.ondragstart = function(e){
+            // dataTransfer是拖拽事件对象的属性
+            // console.log(e.dataTransfer)
+
+            e.dataTransfer.setData('key',this.id)
+            e.dataTransfer.setDragImage(box,200,50);
+           
+            // 对火狐浏览器做兼容，用setData给dataTransfer设置一个key，现在已经不用了，不用多看
+            
+        }
+        
+        // 取消ondragover默认事件
+        wrap.ondragover = function(e){
+            e.preventDefault()
+    
+        }
+        wrap.ondrop = function(e){
+            this.style.backgroundColor='skyblue'
+
+            //files： 获 取外部拖拽的文件，返回一个filesList列表filesList下有个type属性，返回文件的类型
+            // var dt = e.dataTransfer
+            // console.log(dt.files)
+            // return false
+
+            // 用getData获取key
+            const dt = e.dataTransfer;
+             console.log(dt.files)
+            return false;
+            e.dataTransfer.effectAllowed='move';
+            var my_box = document.getElementById(e.dataTransfer.getData('key'))
+            console.log(my_box)
+            document.body.removeChild(my_box )
+        }
+    </script>
+</body>
+</html>

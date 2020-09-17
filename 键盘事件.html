@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <input type="text">
+    <script>
+        var input = document.getElementsByTagName('input')[0];
+        //   input.onkeydown=function(){
+        //       console.log(1);
+        //   }
+        //   input.onkeypress = function(){
+        //       console.log(2);
+        //   }
+        //   input.onkeyup = function(){
+        //       console.log(3)
+        //   }
+          
+          window.onkeydown = function(e){
+              if(e.keyCode === 17){
+                  alert('按下了'+e.key+'键')
+              }else if(e.keyCode === 123 ){
+                  e.preventDefault();
+                  alert('你按下以被阻止')
+              }else{ 
+                  console.log('你按下了'+e.key+'键');
+                  console.log('你按下的是'+e.keyCode+'键码');
+               
+              }
+          }
+          
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 80px;
+            height: 80px;
+            background:url(./imgems/01.png) center/contain ;
+            position: absolute;
+            transform-origin:center; 
+        }
+        .box1{
+
+            width: 80px;
+            height: 80px;
+            background:url(./imgems/01.png) center/contain ;
+            position: absolute;
+            transform-origin:center; 
+        }
+        
+        body{
+            background-color:#EE7700 ;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+  
+    <script>
+        var box=document.getElementsByClassName('box')[0],
+            speedX=8,
+            speedY=8,
+            maxmX=document.documentElement.clientWidth - box.offsetWidth,
+            maxmY=document.documentElement.clientHeight - box.offsetHeight,
+            elementLeft=box.offsetLeft,
+            elementTop=box.offsetTop,
+            wo=0;
+            window.onresize = function(){
+
+            maxmX=document.documentElement.clientWidth - box.offsetWidth;
+            maxmY=document.documentElement.clientHeight - box.offsetHeight;
+
+            }
+            fn(); 
+            function fn(){
+                elementLeft+=speedX;
+                elementTop+=speedY;
+                console.log(elementTop);
+                if(elementLeft<=0 || elementLeft>=maxmX){
+                    speedX=-speedX
+                    if(elementLeft<=0){
+                        elementLeft=0;
+                    }
+                    if(elementLeft>=maxmX){
+                        elementLeft=maxmX;
+                    }
+               
+                }
+                if(elementTop<=0 || elementTop>=maxmY){
+                    speedY=-speedY
+                    if(elementTop<=0){
+                        elementTop=0;
+                    }
+                    if(elementTop>=maxmY){
+                        elementTop=maxmY;
+                    }
+                }
+               
+                box.style.left=elementLeft +'px';
+                box.style.top=elementTop +'px';
+                box.style.transform=`rotate(${wo}deg)`;
+                
+                
+                wo++;
+                console.log(box.style.transform);
+                
+
+                requestAnimationFrame(fn);
+
+            }
+
+
+         
+            
+            
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            min-width: 200px;
+            height: 200px;
+            background: cornsilk;
+        }
+        button{
+            margin-top: 20px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <button id="reb">红</button>
+        <button id="geed">绿</button>
+        <button id="link">粉红</button>
+    </div>
+    <script>
+        var box = document.querySelector("#box");
+        document.querySelector("#reb").ontouchstart = function(){
+                 
+                 box.style.background = 'red'
+
+        }
+        document.querySelector("#geed").ontouchmove = function(){
+                 
+                 box.style.background = '#317ef3'
+
+        }
+        document.querySelector("#link").ontouchend = function(){
+                 
+                 box.style.background = 'lightpink'
+
+        }
+    </script>
+</body>
+</html>

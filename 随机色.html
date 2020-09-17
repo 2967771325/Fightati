@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            margin: 0 auto;
+            width: 80%;
+            border:solid 1px indianred ;
+            overflow: hidden;
+        }
+        p{
+            /* width: 50px; */
+            height: 30px;
+            line-height: 30px;
+            float: left;
+            /* background-color: indigo; */
+            padding: 0 5px;
+            margin: 0 5px;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+      <!-- <p style='background-color:rgba(255,255,0,0.5)'>rgba(255,255,0,0.5)</p>
+            <p style='background-color:rgba(255,0,0,0.5)'>rgba(255,255,0,0.5)</p>
+            <p style='background-color:rgba(0,255,0,0.5)'>rgba(255,255,0,0.5)</p></p> -->
+    </div>
+    <script>
+        var box=document.getElementById('box');
+        console.log(Math.random());
+        
+        function rgb(){
+            return `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`
+        }
+        function rgba(){
+            return `rgba(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)}
+            ,${Math.random().toFixed(1)})`
+        }
+        setInterval(function(){
+            var crod=rgb();
+            var croda=rgba();
+            box.innerHTML+= `<p style='background-color: ${crod} '>${crod} </p>`
+         
+
+        },500)
+
+        setInterval(function(){
+            var crod=rgb();
+            var croda=rgba();
+           
+            box.innerHTML+=`<p style='background-color:  ${croda}'>${croda} </p>`
+
+        },600)
+      
+    </script>
+</body>
+</html>

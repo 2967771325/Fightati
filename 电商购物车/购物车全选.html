@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+          *{
+              margin: 0;
+              padding: 0;
+              user-select: none;
+              cursor: pointer;
+          }
+
+          #warp{
+             width: 1000px;
+             height: 1200px;
+             margin: 100px auto;
+          }
+       .head{
+            width: 100%;
+            height: 40px;
+            background-color: #f3f3f3;
+            border: 1px solid #e9e9e9;
+        }
+        /* .head>div{
+            width: 400px;
+        } */
+        .head>div>p{
+            font-size: 16px;
+            color: black;
+            line-height: 40px;
+            float: left;
+            width: 140px;
+            text-align: center;
+        }
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+         #warp .head .all span{
+            margin-left: 20px;
+            margin-top: 10px;
+             float: left;
+            /* display:inline-block; */
+            width: 20px;
+            height: 20px;
+            background: url(./images/chck.png);
+            cursor: pointer;
+        }
+        #warp .head .all span.active{
+            background: url(./images/chck.png) 0px -20px;
+        }
+        #warp .head .all{
+            width: 80px;
+            margin-right: 40px;
+        }
+        #contet>div{
+            width: 100%;
+            height: 100px;
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        .list>li{
+            list-style: none;
+            float: left;
+            line-height: 100px;
+           
+        }
+        .list>li.xpm{
+            line-height: 32px;
+        }
+
+        .list>li>p{
+            float: right;
+            line-height: 30px;
+            width: 240px;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        .list>li>img{
+           margin-left: 30px;
+           margin-top:10px ;
+        }
+      .list .danjia{
+            margin-left: 228px;
+            line-height: 100px;
+        }
+        .list .num{
+            margin-left: 50px;
+            line-height: 100px;
+            margin-right: 54px;
+        }
+        .list .num>span{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            text-align: center;
+        }
+        .list .num .shuliang{
+            width: 60px ;
+           
+        }
+        .list .num .jian, .list .num .add{
+            background-color: #ddd;
+            cursor: pointer;
+        }
+        #foot{
+            margin-top: 20px;
+            width: 100%;
+            height:50px ;
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+                      
+        }
+        #foot>p{
+            float: left;
+          text-align: center;
+           width: 250px;
+         line-height: 50px;
+       }
+        #foot .check span{
+            width: 20px;
+            height:20px;
+            background: url(./images/chck.png) ;
+            margin-top: 15px;
+             margin-left: 100px;
+             margin-right: 6px;
+          cursor: pointer;
+          float: left;
+                   
+        }
+        #foot .check span.active{
+            background: url(./images/chck.png) 0px -20px;
+        }
+        #foot .check{
+            /* padding-top: 18px; */
+            margin-right: 220px;
+            line-height: 50px;
+            text-align: left;
+        }
+        #foot .zngshu{
+            font-style: normal;
+            font-weight: bold;
+        }
+        .xpm>span{
+            float: left;
+            width: 16px;
+            height: 16px;
+            background: url(./images/chck.png) ;
+            margin: 40px 0 0 20px; 
+            
+        }
+        .xpm span.active{
+            background: url(./images/chck.png) 0px -20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="warp">
+        <div class="head">
+        <div class="left">
+            <p class="all"><span class=""></span>全选</p>
+            <p>商品信息</p>
+        </div>
+         <div class="right" > 
+             <p>单价</p>
+            <p>数量</p>
+            <p>小计</p>
+        </div>
+         </div>
+        <div id="contet">
+            <div>
+            <ul class="list">
+                <li class="xpm"><span class=""></span><img src="./images/xpm.jpg" alt=""> <p>3MM烟斗专用滤芯 吸附型3mm烟斗滤芯 3毫米纸滤芯 100支装</p></li>
+                <li class="danjia">38.8</li>
+                <li class="num">
+                    <span class="jian">-</span>
+                    <span class="shuliang">0</span>
+                    <span class="add">+</span>
+                </li>
+                <li>￥<span class="xiaoji">0</span></li>
+            </ul>
+        </div>
+            <div>
+            <ul class="list">
+                <li class="xpm"><span class=""></span><img src="./images/xpm.jpg" alt=""> <p>3MM烟斗专用滤芯 吸附型3mm烟斗滤芯 3毫米纸滤芯 100支装</p></li>
+                <li class="danjia">26.6</li>
+                <li class="num">
+                    <span class="jian">-</span>
+                    <span class="shuliang">0</span>
+                    <span class="add">+</span>
+                </li>
+                <li>￥<span class="xiaoji">0</span></li>
+            </ul>
+        </div>
+            <div>
+            <ul class="list">
+                <li class="xpm"><span class=""></span><img src="./images/xpm.jpg" alt=""> <p>3MM烟斗专用滤芯 吸附型3mm烟斗滤芯 3毫米纸滤芯 100支装</p></li>
+                <li class="danjia">19.8</li>
+                <li class="num">
+                    <span class="jian">-</span>
+                    <span class="shuliang">0</span>
+                    <span class="add">+</span>
+                </li>
+                <li>￥<span class="xiaoji">0</span></li>
+            </ul>
+        </div>
+        </div>
+        <div id="foot">
+            <p class="check"><span class=""></span>全选</p>
+            <p>已选择<em class="zngshu">0</em>件商品</p>
+            <p>总价：￥<span class="znjian">0</span></p>
+        </div>
+        </div>
+
+       <script>
+             var lck1=document.querySelector('.all span'),
+            lck2=document.querySelector('.check span'),
+            lcki=document.querySelectorAll('.xpm span'),
+            jian=document.getElementsByClassName('jian'),
+            shuliang=document.getElementsByClassName('shuliang'),
+            add=document.getElementsByClassName('add'),          
+            xiaoji=document.getElementsByClassName('xiaoji'),
+            zngshu=document.getElementsByClassName('zngshu')[0],
+            znjian=document.getElementsByClassName('znjian')[0],
+            danjia=document.getElementsByClassName('danjia');
+            console.log(zngshu);
+            var con=0;
+             for(var i=0;i<lcki.length;i++){
+            
+     
+           
+            var strd =[lck1,lck2,lcki[i]];
+             var all=[lck1,lck2 ];
+         
+           strd.forEach(function(val,idx){
+          //点击选中事件
+                 
+             val.kaiguan=false;
+             val.onclick=function(){
+                
+             
+                 if(this.kaiguan){
+                    val.className=''
+                   
+                  
+                   }
+                 else{
+                    val.className='active'
+               
+                  
+                 }
+                 
+                 mnd(this.kaiguan)
+                 this.kaiguan=!this.kaiguan;
+                
+            //  console.log(this.kaiguan);  
+            //    sum(this.kaiguan); 
+            }   
+          
+                
+         })
+
+       
+        
+  
+          
+        }  
+    
+     all.forEach(function(alli){
+      alli.kaiguan=false;
+      alli.onclick=function(){
+        //全选事件
+        if(this.kaiguan){
+                    alli.className=''
+                    
+                 }
+                 else{
+                    alli.className='active'
+                   
+                 }
+                 
+                 this.kaiguan=!this.kaiguan;
+            
+         for(var j=0;j<lcki.length;j++){
+            console.log(j);
+            
+           lcki[j].switch=false;
+               
+                 
+             if(this.switch){
+         
+                 lcki[j].className='';
+
+                 }
+                 else{ 
+                   
+                    lcki[j].className='active';
+                                
+                 } 
+               
+               
+                } 
+                  mnd(this.switch)
+                 this.switch=!this.switch 
+                
+                
+                 
+               
+               
+              }
+           console.log(this.switch);
+           
+       })  
+    //    console.log(shuliang[1].innerHTML);
+       
+       
+     function mnd(idxd){
+           usm=0;
+           xdm=0;
+         for(var r = 0; r<shuliang.length ;r++ ){
+         xiaoji[r].innerHTML=shuliang[r].innerHTML/1*danjia[r].innerHTML*1;
+         xiaoji[r].innerHTML=parseInt(xiaoji[r].innerHTML);
+         usm+=shuliang[r].innerHTML*1;
+         xdm+=xiaoji[r].innerHTML/1 
+                            
+            }
+         
+        //  return idxd ? zngshu.innerHTML=usm : zngshu.innerHTML=0, idxd ? znjian.innerHTML=xdm : znjian.innerHTML= 0; 
+      
+      for(var u=0; u<lcki.length;u++){
+             add[u].index=u;
+              jian[u].index=u; 
+              lcki[u].index=u;
+            add[u].onclick=function(){
+                 //加数量事件
+                   shuliang[this.index].innerHTML++; 
+                
+                   mnd(idxd)      
+         }
+         jian[u].onclick=function(){
+             //减数量事件
+             if(--shuliang[this.index].innerHTML<0){
+                 shuliang[this.index].innerHTML=0
+                
+               } 
+                mnd(idxd)
+         }
+         //勾选确认事件
+                  console.log(idxd);
+         if(idxd){
+
+            zngshu.innerHTML=0 
+            znjian.innerHTML=0
+
+         }
+         else{
+
+            zngshu.innerHTML=usm
+            znjian.innerHTML=xdm
+         }    
+          }
+     }
+    
+  
+        
+        
+      
+        
+           
+                   
+  
+ 
+     
+       
+       </script>
+</body>
+</html>

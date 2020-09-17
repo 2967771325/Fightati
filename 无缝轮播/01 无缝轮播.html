@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="Anthor" content="FengYu">
+	<title> 自动轮播 </title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			user-select: none;
+		}
+		li{
+			list-style:none;
+		}
+		img{
+			vertical-align: top;
+		}
+		#wrap{
+			position: relative;
+			width: 640px;
+			height: 360px;
+			margin:50px auto;
+			overflow: hidden;
+			cursor: pointer;
+		}
+		#wrap .pic{
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 1000%;
+		}
+		.pic li{
+			float: left;
+		}
+
+
+		.tab{
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			margin-left: -100px;
+			width: 150px;
+			height: 30px;
+			padding-left:10px;
+			background: rgba(0,0,0,.2);
+			border-radius: 15px;
+			transition: .5s;
+			transform: scale(.8);
+		}
+		.tab:hover{
+			background: rgba(0,0,0,.5);
+			transform: scale(1.2);
+		}
+		.tab li{
+			width: 20px;
+			height: 20px;
+			float: left;
+			background: #fff;
+			border-radius: 50%;
+			margin: 5px 10px 0 0;
+			opacity: .35;
+			cursor: pointer;
+		}
+		.tab li.on{
+			position: absolute;
+			top: 0px;
+			background: #f60;
+			opacity: 1;
+			z-index: 99;
+		}
+		#wrap>div{
+			position: absolute;
+			top: 50%;
+			margin-top: -30px;
+			width: 30px;
+			height: 60px;
+			background: rgba(0,0,0,.2);
+			text-align: center;
+			font-size: 18px;
+			line-height: 60px;
+			color: #fff;
+			cursor: pointer;
+		}
+		#wrap>div:hover{
+			background: rgba(0,0,0,.5);
+		}
+		.next{
+			right: 0;
+		}
+	</style>
+	<script src="js/animation.js"></script>
+</head>
+<body>
+    <div id="wrap">
+    	<ul class="pic">
+    		<li><img src="img/1.png"></li>
+    		<li><img src="img/2.png"></li>
+    		<li><img src="img/3.png"></li>
+    		<li><img src="img/4.png"></li>
+    		<li><img src="img/5.png"></li>
+    		<li><img src="img/1.png"></li>
+    	</ul>
+		<ul class="tab">
+			<li class="on"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div class="prev"><</div>
+		<div class="next">></div>
+    </div>
+    <!-- <script src="./timer-master/timer-es5.js"></script> -->
+	<script src='./js/animation.js'></script> 
+	<script>
+		var picli=document.querySelectorAll('.pic>li'),
+			tabli=document.querySelectorAll('.tab>li'),
+			onli=document.querySelectorAll('.tab>li.on')[0],
+			prevs=document.getElementsByClassName('prev')[0],
+			nexts=document.getElementsByClassName('next')[0],
+			wrap=document.getElementById('wrap'),
+			picbox=document.getElementsByClassName('pic')[0],
+			deta=new Date();
+			index=0;
+          
+			
+			nexts.onclick=function(){
+
+				if(new Date()-deta>250){
+
+					index++;
+
+				animation( picbox , {
+
+					data:{
+                       left:-640*index
+					}
+						
+
+				} ,500 , function(){
+					if( index === picli.length - 1){
+					
+						this.style.left=0;
+						index=0;
+
+					}
+
+				})
+				// console.log(index);
+				
+				if(index < picli.length - 1 ){
+				animation( onli,{
+
+					data:{
+						
+						left: index*30 + 10
+						
+										},
+						option:{
+								easing:'Bounce'
+							}
+                
+					},500,function(){
+
+			             
+					})
+				}else{
+					animation( onli,{
+
+					data:{
+
+						opacity:0
+					}	
+                    
+
+					}, 250 , function(){
+
+						animation(onli,{
+							data:{
+
+								opacity:1
+							}
+
+							
+						},250)
+						this.style.left="10px"
+
+					})
+                  
+
+				}
+				}
+              deta=new Date();
+			  
+			}
+
+			prevs.onclick=function(){
+
+				if(new Date()-deta>250){
+
+					
+					
+					if(index===0){
+						picbox.style.left=- (picli.length -1 )*640+'px';
+						index=picli.length-1;
+						console.log(tabli.length);
+						
+						animation(onli,{
+							data:{
+								left:(tabli.length-2)*30+10,
+								opacity:0
+								}
+
+							
+                         
+						},250,function(){
+							animation(onli,{
+								data:{
+
+								opacity:1
+							},
+								option:{
+									
+									easing:'Elastic'
+								
+							}
+							},250)
+							
+
+						})
+										
+					 }
+				index--;
+			
+				
+				animation(onli,{
+					data:{
+						left:index*30+10
+					},
+					option:{
+									
+							easing:'Bounce'
+								
+							}
+
+				},500,function(){
+
+
+				})
+				animation( picbox , {
+
+					data:{
+                       left:-640*index
+					}
+
+				} ,500 , function(){
+					
+
+				})
+				
+				
+			                  
+							deta=new Date();
+			  }
+			  
+			}
+			
+			
+        for(var i = 1;i<tabli.length;i++){
+			tabli[i].index=i-1;
+			
+			tabli[i].onclick=function(){
+				  var zhin=this;
+				
+				if(this.index-index===1||this.index-index===-1){
+
+                   animation(onli,{
+					data:{
+						left:30*this.index+10
+					},
+						option:{
+								easing:'Bounce'
+							}
+
+
+				},500,)
+				}else{
+					animation(onli,{
+						data:{
+							opacity:0
+						}
+
+					},250,function(){
+						animation(onli,{
+							data:{
+
+							opacity:1,
+							left:30*zhin.index+10
+
+							},
+							option:{
+								easing:'Circ'
+							}
+                         
+						},250)
+
+					})
+				}
+				
+				animation(picbox,{
+				data:{
+					left:this.index*-640
+				}
+			},500)
+			index=this.index;
+		
+			
+			}
+			
+
+		}
+		function fn(){
+			index++;
+			if(index>picli.length-2){
+				index=0;
+				
+                picbox.style.left=index*-640+"px";
+							
+			}else{
+
+			picbox.style.left=index*-640+"px";
+				
+  			}
+			if(index>tabli.length-2){
+				index=0;
+				onli.style.left=30*index+10+"px";
+			}else{
+				
+				// console.log(index);
+				
+				onli.style.left=30*index+10+"px";
+				
+			}
+	        
+			 
+			
+		}
+         var timerId = setInterval(fn,1000); 
+
+		wrap.onmouseleave = function(){
+				console.log(2);
+          
+		     timerId=setInterval(fn,1000);
+			
+
+			 }
+		  wrap.onmouseenter =function(){
+
+            // timer.pause(timerId);
+			//  timer.resume(timerId);
+			console.log(1);
+			clearInterval(timerId )
+								
+			 }	
+			
+			
+			
+			
+				
+				
+					
+			 
+			 	
+						
+			
+	</script>
+	
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            margin-left: 40%;
+            width: 500px;
+            height: 400px;
+            background: url('https://img13.360buyimg.com/da/s1180x940_jfs/t1/134113/20/7744/47948/5f401b70Ef7e17d45/0435f06e549d9f5e.jpg.webp') 
+            center/contain;
+             } 
+           button{
+               float: right;
+               margin-top: 10px;
+               margin-right:10px ;
+           }
+            
+    </style>
+</head>
+<body>
+   
+    <div id="box">
+        <button id="full">全屏</button>
+        <button id="restore">还原</button>
+    </div>
+    <script>
+
+       if(navigator.onLine){
+
+            alert("网络已连接")
+        
+     }else{
+
+          alert("网络未连接")
+
+     }
+     
+         var box =document.querySelector("#box");
+        document.querySelector("#full").onclick = function(){
+            if(box.requestFullscreen){
+
+                box.requestFullscreen() 
+
+            }
+           
+             
+     }
+      document.querySelector("#restore").onclick = function(){
+           document.webkitCancelFullScreen()
+           if(!document.fullscreen){
+               alert("以经最小化")
+
+           }
+      }
+     
+    </script>
+    
+</body>
+</html>

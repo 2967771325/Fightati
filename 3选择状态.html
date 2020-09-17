@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        width: 200px;
+        height: 100px;
+        background-color: aqua;
+        margin: 50px auto;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 100px;
+        color: #ff5502;
+    }
+    </style>
+    
+</head>
+<body>
+      <div id="box1"></div>
+      <div id="box2"></div>
+      <script>
+        var nav1= document.getElementById("box1");
+        var nav2= document.getElementById("box2");
+       
+        nav1.onclick = function(){
+            nav2.style.backgroundColor="#ddd";
+            nav1.style.backgroundColor="aqua";
+            nav1.innerHTML="<p href='javascript:;'> 第一个盒子 </p>";
+            nav2.innerHTML="";
+        }
+        nav2.onclick = function(){
+            nav1.style.backgroundColor="#ddd";
+            nav2.style.backgroundColor="aqua";
+            nav2.innerHTML="<p href='javascript:;'> 第二个盒子 </p>";
+            nav1.innerHTML="";
+        }
+        
+      </script>
+</body>
+</html>

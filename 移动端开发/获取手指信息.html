@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #box{
+           height: 5000px;
+           background-color: chartreuse;
+       }
+    </style>
+</head>
+<body>
+       <div id="box" ></div>
+       <script>
+           var box = document.getElementById('box');
+           console.log(box);
+
+           box.addEventListener( 'touchend' ,function(e){
+                
+                // console.log(e.touches);
+                // console.log(e.targetTouches);
+                console.log(e.changedTouches);
+                console.log(e.changedTouches.length);
+                console.log(e.changedTouches[0].pageX);
+                console.log(e.changedTouches[0].pageY);
+           } )
+       </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            width:1000px;
+            height:100px;
+            background-color: darkorchid;
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div id="box"></div>
+
+
+
+
+    <script>
+    
+        window.requestAnimationFrame = window.requestAnimationFrame || function(){
+            return setTimeout( fn ,1000/60 )
+        }
+        window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+        var box = document.getElementById('box')
+        /*
+            规定对象：
+            box
+            起始的值：
+                width:100px;
+                height:150px
+            最终的值：
+                width:500px;
+                height:500px
+                步长：  
+                每一帧运动的步伐
+                
+                105  ->110 -> 500px    
+                100px  -> 200px  -> 500px.3
+
+            目的：通过封装animation函数来实现对象的样式发生改变：
+                比如宽度从100px -> 500px;
+
+        */ 
+       
+        animation(box , "width" , 100 , 10)
+        
+       function  animation(ele,attr,value,step){
+        var divstarting=parseFloat(getStyle(ele)[attr])
+            value=parseFloat(value);
+            step=parseFloat(step)
+         var sivDirection=divstarting > value;
+         console.log(sivDirection);
+         
+         if (sivDirection) {
+            step=-step
+               
+         }
+         else{
+          step=step
+             
+         }
+         
+         
+         fn();
+         function fn(){
+             divstarting+=step
+             console.log(sivDirection); 
+            if (sivDirection? divstarting <= value :divstarting >=value) {
+                divstarting=value;
+                 console.log(1);
+                 
+                
+                         
+            }
+            else{
+                requestAnimationFrame(fn)
+                console.log(2); 
+            }
+              
+               
+                    
+         ele.style[attr]=divstarting+"px"
+       }
+
+       }
+        // animation( box2, "height" , 500 , 10 )
+        // animation( box1, "font-size" , 500 , 10 )
+
+        
+        
+       function getStyle( ele ){   //box
+           return ( ele.currentStyle ||  getComputedStyle(ele));
+       }
+
+       
+    
+    
+    </script>
+
+</body>
+</html>
