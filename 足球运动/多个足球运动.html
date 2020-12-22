@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>多个足球运动</title>
+    <link rel="icon" href="https://cdn.dribbble.com/assets/dribbble-ball-192-23ecbdf987832231e87c642bb25de821af1ba6734a626c8c259a20a0ca51a247.png">
     <style>
         *{
             margin: 0;
@@ -96,21 +97,23 @@
              
               
 
-                 } 
+                 }  
+                 
+           
              window.onkeydown=function(e){
-
-                            
-                  if(e.keyCode === 17){
+                
+                   if(e.keyCode === 16){
+                         
+                    plaid =  setInterval( play ,20 ); 
+                
+                      
+                     } else if(e.keyCode === 17){
                     
-                    clearInterval(play );
+                    clearInterval(plaid );
                     
                   
-                  }else if(e.keyCode ===18){
-                         
-                   
-                  var plaid=+setInterval( play ,100); 
-                      
-                     } 
+                  }
+                 
                   
          }
                   
